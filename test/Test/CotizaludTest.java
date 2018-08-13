@@ -54,6 +54,37 @@ public class CotizaludTest {
         assertEquals(med1.get(0).getPrecio(),med2.get(0).getPrecio());
         assertEquals(med1.get(0).getDireccion(),med2.get(0).getDireccion());
         assertEquals(med1.get(0).getComuna(),med2.get(0).getComuna());
+        assertEquals(med1.get(0).getRegion(),med2.get(0).getRegion());    
+    }
+    @Test
+    public void test5() throws SQLException{
+    VMedicamentos gmed= new VMedicamentos();
+        String region="Arica";
+        String medicamento="PARACETAMOL";
+        String farmacia="Cruz Verde";
+        Medicamento med = new Medicamento(region, medicamento, farmacia);
+        med.setCodigo(3305);
+        med.setMedicamento(medicamento);
+        med.setDosis("500 mg");
+        med.setPresentacion("16 COMPRIMIDOS");
+        med.setMarca("LABORATORIOS ANDRÓMACO S.A.");
+        med.setFarmacia(farmacia);
+        med.setPrecio(930);
+        med.setDireccion("21 de Mayo 299");
+        med.setComuna(region);
+        med.setRegion(region);
+        ArrayList<Medicamento> med1= new ArrayList<Medicamento>();
+        med1.add(med);
+        ArrayList<Medicamento> med2=gmed.generarMedicamentos(region, medicamento, farmacia);
+        assertEquals(med1.get(0).getCodigo(),med2.get(0).getCodigo());
+        assertEquals(med1.get(0).getMedicamento(),med2.get(0).getMedicamento());
+        assertEquals(med1.get(0).getDosis(),med2.get(0).getDosis());
+        assertEquals(med1.get(0).getPresentacion(),med2.get(0).getPresentacion());
+        assertEquals(med1.get(0).getMarca(),med2.get(0).getMarca());
+        assertEquals(med1.get(0).getFarmacia(),med2.get(0).getFarmacia());
+        assertEquals(med1.get(0).getPrecio(),med2.get(0).getPrecio());
+        assertEquals(med1.get(0).getDireccion(),med2.get(0).getDireccion());
+        assertEquals(med1.get(0).getComuna(),med2.get(0).getComuna());
         assertEquals(med1.get(0).getRegion(),med2.get(0).getRegion());
     }
    @Test
