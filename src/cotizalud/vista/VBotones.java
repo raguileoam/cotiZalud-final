@@ -21,41 +21,41 @@ public class VBotones extends JPanel {
     private JButton btnEliminar;
     private JButton btnReporte;
     private JButton btnSalir;
-    private JPanel izq;
+    private JPanel pIzq;
     private JLabel total;
     private JLabel textTotal;
-    private JPanel der;
+    private JPanel pDer;
 
     /**
      *
      * @return
      */
-    public JPanel getIzq() {
-        return izq;
+    public JPanel getpIzq() {
+        return pIzq;
     }
 
     /**
      *
-     * @param izq
+     * @param pIzq
      */
-    public void setIzq(JPanel izq) {
-        this.izq = izq;
+    public void setpIzq(JPanel pIzq) {
+        this.pIzq = pIzq;
     }
 
     /**
      *
      * @return
      */
-    public JPanel getDer() {
-        return der;
+    public JPanel getpDer() {
+        return pDer;
     }
 
     /**
      *
-     * @param der
+     * @param pDer
      */
-    public void setDer(JPanel der) {
-        this.der = der;
+    public void setpDer(JPanel pDer) {
+        this.pDer = pDer;
     }
 
     /**
@@ -154,20 +154,20 @@ public class VBotones extends JPanel {
         btnEliminar = new JButton("Eliminar");
         btnReporte = new JButton("Hacer Reporte");
         btnSalir = new JButton("Salir");
-        izq = new JPanel();
+        pIzq = new JPanel();
         textTotal = new JLabel("Total medicamentos: $");
         total = new JLabel("0");
-        der = new JPanel();
-        izq.setBackground(Color.ORANGE);
-        der.setBackground(Color.orange);
-        izq.add(btnAgregar);
-        izq.add(btnEliminar);
-        izq.add(btnReporte);
-        der.add(textTotal);
-        der.add(total);
-        der.add(btnSalir);
-        this.add(izq, BorderLayout.WEST);
-        this.add(der, BorderLayout.EAST);
+        pDer = new JPanel();
+        pIzq.setBackground(Color.ORANGE);
+        pDer.setBackground(Color.orange);
+        pIzq.add(btnAgregar);
+        pIzq.add(btnEliminar);
+        pIzq.add(btnReporte);
+        pDer.add(textTotal);
+        pDer.add(total);
+        pDer.add(btnSalir);
+        this.add(pIzq, BorderLayout.WEST);
+        this.add(pDer, BorderLayout.EAST);
 
     }
 

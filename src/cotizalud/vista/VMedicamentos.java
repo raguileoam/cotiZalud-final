@@ -48,7 +48,7 @@ public class VMedicamentos extends JTable {
             while (rs.next()) {
                 Medicamento medic=new Medicamento();
                 medic.setCodigo(rs.getInt("id"));
-                medic.setMedicamento(rs.getString("medicamento"));
+                medic.setNombre(rs.getString("medicamento"));
                 medic.setDosis(rs.getString("dosis"));
                 medic.setPresentacion(rs.getString("presentación"));
                 medic.setMarca(rs.getString("marca"));
@@ -74,7 +74,7 @@ public class VMedicamentos extends JTable {
         for (int i=0; i<medicamentos.size();i++){
         Object[] obj = new Object[10];
         obj[0] = medicamentos.get(i).getCodigo();
-        obj[1] = medicamentos.get(i).getMedicamento();
+        obj[1] = medicamentos.get(i).getNombre();
         obj[2] = medicamentos.get(i).getDosis();
         obj[3] = medicamentos.get(i).getPresentacion();
         obj[4] = medicamentos.get(i).getMarca();

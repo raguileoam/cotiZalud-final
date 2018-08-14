@@ -14,18 +14,18 @@ import org.apache.commons.io.FileUtils;
 /**
  * Descarga archivo excel
  */
-public class Descarga {
+public final class Descarga {
 
-    private URL url;
-    private String file;
-    private File dir;
+    private final URL url;
+    private final String file;
+    private final File dir;
 
     /**
      * Constructor de la clase Descarga
      *
-     * @throws IOException
+     * @throws java.net.MalformedURLException
      */
-    public Descarga() throws IOException {
+    public Descarga() throws MalformedURLException  {
         this.url = new URL("https://www.sernac.cl/wp-content/themes/gobCL-sitios-1.0/sip/apiSIP.php?mercado=medicamentos&tipo=10");
         this.file = "descargas/medicamentos.html";
         this.dir = new File(file);
@@ -34,15 +34,13 @@ public class Descarga {
 
     /**
      * Descarga archivo de la página del SIP
-     *
-     * @throws MalformedURLException
-     * @throws IOException
+     * @return booleano para ver si la ejecución fue correcta
      */
-    public boolean descargar() throws MalformedURLException, IOException {
+    public boolean descargar() {
        try{
         FileUtils.copyURLToFile(url, dir);
         
-    }catch(Exception e){
+    }catch(IOException e){
         return false;
     }
        return true;

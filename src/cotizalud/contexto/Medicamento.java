@@ -11,13 +11,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Clase medicamento del contexto problema
+ * Clase nombre del contexto problema
  */
 public class Medicamento {
 
     private Statement consulta;
     private String region;
-    private String medicamento;
+    private String nombre;
     private String farmacia;
     private int codigo;
     private String dosis;
@@ -33,8 +33,8 @@ public class Medicamento {
     public DB db;
 
     /**
-     *
-     * @return
+     * Consulta para la base de datos
+     * @return esta consulta
      */
     public Statement getConsulta() {
         return consulta;
@@ -64,20 +64,24 @@ public class Medicamento {
         this.db = db;
     }
 
-    /**
-     * Constructor de la clase Buscador
-     *
-     * @param region region en donde buscar el medicamento
-     * @param medicamento medicamento a buscar
-     * @param farmacia farmacia en donde buscar el medicamento
-     * @throws SQLException Excepcion en MySQL
+     /**
+     * Constructor vacio de la clase Medicamento
+     * 
      */
     public Medicamento(){}
+     /**
+     * Constructor de la clase nombre
+     *
+     * @param region region en donde buscar el nombre
+     * @param medicamento nombre a buscar
+     * @param farmacia farmacia en donde buscar el nombre
+     * @throws SQLException Excepcion en MySQL
+     */
     public Medicamento(String region, String medicamento, String farmacia) throws SQLException {
         this.db = new DB();
         this.consulta = (Statement) db.getConn().createStatement();
         this.region = region;
-        this.medicamento = medicamento;
+        this.nombre = medicamento;
         this.farmacia = farmacia;
     }
 
@@ -94,8 +98,8 @@ public class Medicamento {
         if (null != region && !"".endsWith(region)) {
             consulta = consulta + " AND región like '%" + region.replace("\'", "''") + "%'";
         }
-        if (null != medicamento && !"".endsWith(medicamento)) {
-            consulta = consulta + " AND medicamento LIKE '%" + medicamento + "%'";
+        if (null != nombre && !"".endsWith(nombre)) {
+            consulta = consulta + " AND medicamento LIKE '%" + nombre + "%'";
         }
         if (null != farmacia && !"".endsWith(farmacia)) {
             consulta = consulta + " AND farmacía = '" + farmacia + "'";
@@ -105,13 +109,13 @@ public class Medicamento {
     }
 
     /**
-     *
-     * @return
+     * Convierte la clase Medicamento en array de Object
+     * @return este array de Object
      */
     public Object[] toArray() {
         Object[] obj = new Object[10];
         obj[0] = codigo;
-        obj[1] = medicamento;
+        obj[1] = nombre;
         obj[2] = dosis;
         obj[3] = presentacion;
         obj[4] = marca;
@@ -127,19 +131,19 @@ public class Medicamento {
      * Constructor con parametros de Medicamento
      *
      * @param codigo Codigo del medicamento
-     * @param medicamento Medicamento del medicamento
+     * @param nombre Nombre del medicamento
      * @param dosis Dosis del medicamento
      * @param presentacion Presentacion del medicamento
      * @param marca Marca del medicamento
      * @param farmacia Farmacia del medicamento
-     * @param precio Precio del medicamento
+     * @param precio Precio del nombre
      * @param direccion Direccion de la farmacia del medicamento
      * @param comuna Comuna de la farmacia del medicamento
      * @param region Region de la farmacia del medicamento
      */
-    public Medicamento(int codigo, String medicamento, String dosis, String presentacion, String marca, String farmacia, int precio, String direccion, String comuna, String region) {
+    public Medicamento(int codigo, String nombre, String dosis, String presentacion, String marca, String farmacia, int precio, String direccion, String comuna, String region) {
         this.codigo = codigo;
-        this.medicamento = medicamento;
+        this.nombre = nombre;
         this.dosis = dosis;
         this.presentacion = presentacion;
         this.marca = marca;
@@ -162,30 +166,30 @@ public class Medicamento {
     /**
      * Edita el codigo del medicamento
      *
-     * @param codigo Codigo del medicamento
+     * @param codigo Codigo del nombre
      */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
     /**
-     *
+     *  Retorna nombre del medicamento
      * @return
      */
-    public String getMedicamento() {
-        return medicamento;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     *
-     * @param medicamento
+     * Edita el codigo del medicamento
+     * @param nombre
      */
-    public void setMedicamento(String medicamento) {
-        this.medicamento = medicamento;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
-     *
+     *  Retorna dosis del medicamento
      * @return
      */
     public String getDosis() {
@@ -193,7 +197,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita la dosis del medicamento
      * @param dosis
      */
     public void setDosis(String dosis) {
@@ -201,7 +205,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     *  Retorna presentacion del medicamento
      * @return
      */
     public String getPresentacion() {
@@ -209,7 +213,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita la presentacion del medicamento
      * @param presentacion
      */
     public void setPresentacion(String presentacion) {
@@ -217,7 +221,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Retorna marca del medicamento
      * @return
      */
     public String getMarca() {
@@ -225,7 +229,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita la marca del medicamento
      * @param marca
      */
     public void setMarca(String marca) {
@@ -233,7 +237,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Retorna farmacia del medicamento
      * @return
      */
     public String getFarmacia() {
@@ -241,7 +245,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita la farmacia del medicamento
      * @param farmacia
      */
     public void setFarmacia(String farmacia) {
@@ -249,7 +253,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Retorna precio del medicamento
      * @return
      */
     public int getPrecio() {
@@ -257,7 +261,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita el precio del medicamento
      * @param precio
      */
     public void setPrecio(int precio) {
@@ -273,7 +277,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita la direccion del medicamento
      * @param direccion
      */
     public void setDireccion(String direccion) {
@@ -289,7 +293,7 @@ public class Medicamento {
     }
 
     /**
-     *
+     * Edita la comuna del medicamento
      * @param comuna
      */
     public void setComuna(String comuna) {
@@ -297,19 +301,18 @@ public class Medicamento {
     }
 
     /**
-     *
-     * @return
+     * Retorna region del medicamento
+     * @return esta region del medicamento
      */
     public String getRegion() {
         return region;
     }
 
     /**
-     *
+     * Edita la region del medicamento
      * @param region
      */
     public void setRegion(String region) {
         this.region = region;
     }
 }
-//traer clase buscador aca y setear los valores encontrados por el metodo respuesta a los atributos,luego con el get de cada atributo agregar estos datos a cada fila y con esto setear el defaulttablemodel

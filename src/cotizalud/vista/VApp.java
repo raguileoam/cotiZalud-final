@@ -9,7 +9,7 @@ package cotizalud.vista;
 import cotizalud.contexto.Medicamento;
 import cotizalud.datos.Reporte;
 import cotizalud.vista.util.SpinnerEditor;
-import cotizalud.vista.util.Total;
+import cotizalud.vista.util.TotalCellRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
  * @author raguileoam
  */
 
-public class VApp extends JFrame implements ActionListener, KeyListener, TableModelListener {
+public final class VApp extends JFrame implements ActionListener, KeyListener, TableModelListener {
     
     private VMedicamentos gMeds;
     private VSeleccionados gSelects;
@@ -94,7 +94,6 @@ public class VApp extends JFrame implements ActionListener, KeyListener, TableMo
      *Dar propiedades basicas a la interfaz grafica de VApp
      */
     public void initWindow() {
-        //this.setLocationRelativeTo(null);
         this.setTitle("Cotizalud");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBackground(Color.orange);
@@ -105,9 +104,8 @@ public class VApp extends JFrame implements ActionListener, KeyListener, TableMo
     }
 
     /**
-     *
-     * @param ae
      * Añadir funciones a los botones que posee la gui de VApp
+     * @param ae ActionEvent de esta clase
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -141,7 +139,7 @@ public class VApp extends JFrame implements ActionListener, KeyListener, TableMo
                 gSelects.getDtm().addRow(obj);
                 gSelects.setModel(gSelects.getDtm());
                 gSelects.getColumn("Cantidad").setCellEditor(new SpinnerEditor()); //Intentar mover fuera de este método
-                gSelects.getColumn("Precio total").setCellRenderer(new Total());
+                gSelects.getColumn("Precio total").setCellRenderer(new TotalCellRenderer());
             }
 
         }
@@ -206,7 +204,7 @@ public class VApp extends JFrame implements ActionListener, KeyListener, TableMo
     /**
      *
      * @param e
-     * si se añade un producto se actualiza el valor del precio total y si se elimina se resta
+     * Si se añade un producto se actualiza el valor del precio total y si se elimina se resta
      */
     @Override
     public void tableChanged(TableModelEvent e) {

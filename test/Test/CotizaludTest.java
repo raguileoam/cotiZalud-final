@@ -33,7 +33,7 @@ public class CotizaludTest {
         String farmacia="Cruz Verde";
         Medicamento med = new Medicamento(region, medicamento, farmacia);
         med.setCodigo(3517);
-        med.setMedicamento(medicamento);
+        med.setNombre(medicamento);
         med.setDosis("10 mg");
         med.setPresentacion("30 CÁPSULAS BLANDAS");
         med.setMarca("LABORATORIO BAGÓ DE CHILE S.A.");
@@ -46,7 +46,7 @@ public class CotizaludTest {
         med1.add(med);
         ArrayList<Medicamento> med2=gmed.generarMedicamentos(region, medicamento, farmacia);
         assertEquals(med1.get(0).getCodigo(),med2.get(0).getCodigo());
-        assertEquals(med1.get(0).getMedicamento(),med2.get(0).getMedicamento());
+        assertEquals(med1.get(0).getNombre(),med2.get(0).getNombre());
         assertEquals(med1.get(0).getDosis(),med2.get(0).getDosis());
         assertEquals(med1.get(0).getPresentacion(),med2.get(0).getPresentacion());
         assertEquals(med1.get(0).getMarca(),med2.get(0).getMarca());
@@ -64,7 +64,7 @@ public class CotizaludTest {
         String farmacia="Cruz Verde";
         Medicamento med = new Medicamento(region, medicamento, farmacia);
         med.setCodigo(3305);
-        med.setMedicamento(medicamento);
+        med.setNombre(medicamento);
         med.setDosis("500 mg");
         med.setPresentacion("16 COMPRIMIDOS");
         med.setMarca("LABORATORIOS ANDRÓMACO S.A.");
@@ -77,7 +77,7 @@ public class CotizaludTest {
         med1.add(med);
         ArrayList<Medicamento> med2=gmed.generarMedicamentos(region, medicamento, farmacia);
         assertEquals(med1.get(0).getCodigo(),med2.get(0).getCodigo());
-        assertEquals(med1.get(0).getMedicamento(),med2.get(0).getMedicamento());
+        assertEquals(med1.get(0).getNombre(),med2.get(0).getNombre());
         assertEquals(med1.get(0).getDosis(),med2.get(0).getDosis());
         assertEquals(med1.get(0).getPresentacion(),med2.get(0).getPresentacion());
         assertEquals(med1.get(0).getMarca(),med2.get(0).getMarca());

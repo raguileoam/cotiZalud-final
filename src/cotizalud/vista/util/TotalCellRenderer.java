@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author raguileoam
  */
-public class Total extends DefaultTableCellRenderer {
+public class TotalCellRenderer extends DefaultTableCellRenderer {
 
     private static final int VALIDATION_COLUMN = 1;
 
